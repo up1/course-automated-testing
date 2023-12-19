@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "f6d285cf-0d3f-4144-bfa4-e6ac44723ec6",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1453931"
+	},
+	"item": [
+		{
+			"name": "https://jsonplaceholder.typicode.com/users/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check email\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.email).to.eql(\"Sincere@april.biz\");",
+							"});",
+							"",
+							"pm.test(\"Schema is valid\", function () {",
+							"  var schema = {",
+							"    type: \"object\",",
+							"    properties: {",
+							"      id: { type: \"number\" },",
+							"      name: { type: \"string\" },",
+							"      username: { type: \"string\" },",
+							"      email: { type: \"string\", format: \"email\" },",
+							"      address: {",
+							"        type: \"object\",",
+							"        properties: {",
+							"          street: { type: \"string\" },",
+							"          suite: { type: \"string\" },",
+							"          city: { type: \"string\" },",
+							"          zipcode: { type: \"string\" },",
+							"          geo: {",
+							"            type: \"object\",",
+							"            properties: {",
+							"              lat: { type: \"string\" },",
+							"              lng: { type: \"string\" }",
+							"            },",
+							"            required: [\"lat\", \"lng\"]",
+							"          }",
+							"        },",
+							"        required: [\"street\", \"suite\", \"city\", \"zipcode\", \"geo\"]",
+							"      },",
+							"      phone: { type: \"string\" },",
+							"      website: { type: \"string\" },",
+							"      company: {",
+							"        type: \"object\",",
+							"        properties: {",
+							"          name: { type: \"string\" },",
+							"          catchPhrase: { type: \"string\" },",
+							"          bs: { type: \"string\" }",
+							"        },",
+							"        required: [\"name\", \"catchPhrase\", \"bs\"]",
+							"      }",
+							"    },",
+							"    required: [\"id\", \"name\", \"username\", \"email\", \"address\", \"phone\", \"website\", \"company\"]",
+							"  };",
+							"",
+							"  var response = pm.response.json();",
+							"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
