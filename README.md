@@ -1,4 +1,4 @@
-# Software Testing :: Automation testing
+# Software Testing :: From Manual to Automation testing 
 
 ## Outline
 * รูปแบบและแนวทางในการออกแบบ พัฒนา และ ทดสอบระบบงาน
